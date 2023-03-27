@@ -1,3 +1,21 @@
 _schema-version: "3.2"
 ID: Workflow_OpenSAP
 version: 0.0.1
+modules:
+- name: Capex
+  type: com.sap.application.content
+  path: Capex
+  requires:
+  - name: sap_processautomation
+    parameters:
+      content-target: true
+      service-key:
+        config:
+          deployUsageScenario: workflow
+        name: spa-workflow-service-key
+resources:
+- name: sap_processautomation
+  type: org.cloudfoundry.managed-service
+  parameters:
+    service: process-automation-service
+    service-plan: standard

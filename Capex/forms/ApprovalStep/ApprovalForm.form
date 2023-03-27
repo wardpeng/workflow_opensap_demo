@@ -1,0 +1,245 @@
+{
+    "id": "approvalform",
+    "schemaVersion": "1.1.0",
+    "name": "ApprovalForm",
+    "revision": "1.0",
+    "type": "task",
+    "readOnly": false,
+    "content": [
+        {
+            "id": "investment_details",
+            "type": "section",
+            "title": "Investment Details",
+            "content": [
+                {
+                    "id": "title",
+                    "type": "string",
+                    "label": "Title",
+                    "readOnly": true,
+                    "value": "${context.Title}",
+                    "constraints": {
+                        "required": false
+                    }
+                },
+                {
+                    "id": "request_id",
+                    "type": "string",
+                    "label": "Request Id",
+                    "readOnly": false,
+                    "value": "${context.RequestId}",
+                    "constraints": {
+                        "required": true
+                    }
+                },
+                {
+                    "id": "type",
+                    "type": "string",
+                    "label": "Type",
+                    "readOnly": false,
+                    "value": "${context.Investment.Type}",
+                    "constraints": {
+                        "required": true
+                    }
+                },
+                {
+                    "id": "country_region",
+                    "type": "string",
+                    "label": "Country/Region",
+                    "readOnly": false,
+                    "value": "${context.Investment.Country}",
+                    "constraints": {
+                        "required": true
+                    }
+                },
+                {
+                    "id": "business_unit",
+                    "type": "string",
+                    "label": "Business Unit",
+                    "readOnly": false,
+                    "value": "${context.Investment.BusinessUnit}",
+                    "constraints": {
+                        "required": true
+                    }
+                },
+                {
+                    "id": "description",
+                    "type": "string",
+                    "label": "Description",
+                    "readOnly": false,
+                    "value": "${context.Investment.Description}",
+                    "constraints": {
+                        "required": false
+                    }
+                },
+                {
+                    "id": "capex",
+                    "type": "float",
+                    "label": "CAPEX",
+                    "readOnly": false,
+                    "value": "${context.Investment.CAPEX}",
+                    "constraints": {
+                        "required": true
+                    }
+                },
+                {
+                    "id": "_context_investment_capex_",
+                    "type": "float",
+                    "label": "OPEX",
+                    "readOnly": false,
+                    "value": "${context.Investment.OPEX}",
+                    "constraints": {
+                        "required": true
+                    }
+                },
+                {
+                    "id": "total_cost",
+                    "type": "float",
+                    "label": "Total Cost",
+                    "readOnly": false,
+                    "value": "${context.Investment.TotalCost}",
+                    "constraints": {
+                        "required": true
+                    }
+                },
+                {
+                    "id": "roi",
+                    "type": "float",
+                    "label": "ROI",
+                    "readOnly": false,
+                    "value": "${context.Investment.ROI}",
+                    "constraints": {
+                        "required": false
+                    }
+                },
+                {
+                    "id": "currency",
+                    "type": "string",
+                    "label": "Currency",
+                    "readOnly": false,
+                    "value": "${context.Investment.Currency}",
+                    "constraints": {
+                        "required": true
+                    }
+                }
+            ]
+        },
+        {
+            "id": "investment_requester",
+            "type": "section",
+            "title": "Investment Requester",
+            "content": [
+                {
+                    "id": "name",
+                    "type": "string",
+                    "label": "Name",
+                    "readOnly": true,
+                    "value": "${context.Requester.Name}",
+                    "constraints": {
+                        "required": false
+                    }
+                },
+                {
+                    "id": "comment_from_requester",
+                    "type": "string",
+                    "label": "Comment from Requester",
+                    "readOnly": false,
+                    "value": "${context.Requester.Comment}",
+                    "constraints": {
+                        "required": false
+                    }
+                }
+            ]
+        },
+        {
+            "id": "history_",
+            "type": "section",
+            "title": "",
+            "content": [
+                {
+                    "id": "history",
+                    "type": "collection",
+                    "title": "History",
+                    "addEnabled": false,
+                    "deleteEnabled": false,
+                    "value": "${context.History}",
+                    "content": [
+                        {
+                            "id": "user",
+                            "type": "string",
+                            "label": "User",
+                            "readOnly": true,
+                            "value": "${item.User}",
+                            "constraints": {
+                                "required": false
+                            }
+                        },
+                        {
+                            "id": "role",
+                            "type": "string",
+                            "label": "Role",
+                            "readOnly": true,
+                            "value": "${item.Role}",
+                            "constraints": {
+                                "required": false
+                            }
+                        },
+                        {
+                            "id": "decision",
+                            "type": "string",
+                            "label": "Decision",
+                            "readOnly": true,
+                            "value": "${item.Decision}",
+                            "constraints": {
+                                "required": false
+                            }
+                        },
+                        {
+                            "id": "comment",
+                            "type": "string",
+                            "label": "Comment",
+                            "readOnly": true,
+                            "value": "${item.Comment}",
+                            "constraints": {
+                                "required": false
+                            }
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "decision",
+            "type": "section",
+            "title": "",
+            "content": [
+                {
+                    "id": "comment",
+                    "type": "string",
+                    "label": "Comment",
+                    "readOnly": false,
+                    "value": "${context.comment}",
+                    "constraints": {
+                        "required": false
+                    }
+                }
+            ]
+        }
+    ],
+    "decisions": [
+        {
+            "id": "approve",
+            "text": "Approve",
+            "decisionType": "positive"
+        },
+        {
+            "id": "reject",
+            "text": "Reject",
+            "decisionType": ""
+        },
+        {
+            "id": "rework",
+            "text": "Rework",
+            "decisionType": ""
+        }
+    ]
+}
